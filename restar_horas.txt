@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main()
+{
+    //Declaración de variables
+    int liHoras1=0, liMinutos1=0, liSegundos1=0,
+        liHoras2=0, liMinutos2=0, liSegundos2=0,
+        liHorasTotal=0, liMinutosTotal=0, liSegundosTotal=0;
+
+    //Entrada de datos
+    printf("Ingrese la hora #1 (HH:MM:SS): ");
+    scanf("%d:%d:%d", &liHoras1, &liMinutos1, &liSegundos1); 
+    //Si hay un dato incorrecto pregunta hasta acertar
+    while(liSegundos1<0 || liSegundos1>59 || liMinutos1<0 || liMinutos1>59 || liHoras1<0 || liHoras1>23){
+        printf("Te equivocaste en algo, intenta de nuevo\n");
+        printf("Ingrese la hora #1 (HH:MM:SS): ");
+        scanf("%d:%d:%d", &liHoras1, &liMinutos1, &liSegundos1);    
+    };
+    //Si hay un dato incorrecto pregunta hasta acertar
+    printf("Ingrese la hora #2 (HH:MM:SS): ");
+    scanf("%d:%d:%d", &liHoras2, &liMinutos2, &liSegundos2);
+    while(liSegundos2<0 || liSegundos2>59 || liMinutos2<0 || liMinutos2>59 || liHoras2<0 || liHoras2>23){
+        printf("Te equivocaste en algo, intenta de nuevo\n");
+        printf("Ingrese la hora #2 (HH:MM:SS): ");
+        scanf("%d:%d:%d", &liHoras2, &liMinutos2, &liSegundos2);    
+    };
+    
+    //Procesamiento
+    liHorasTotal = liHoras1 - liHoras2;
+    liMinutosTotal = liMinutos1 - liMinutos2;
+    liSegundosTotal = liSegundos1 - liSegundos2;
+    
+    if(liSegundosTotal<0){
+        liSegundosTotal = 60+liSegundosTotal;
+        liMinutosTotal = liMinutosTotal-1;
+    }
+    if(liMinutosTotal<0){
+        liMinutosTotal = 60+liMinutosTotal;
+        liHorasTotal = liHorasTotal-1;
+    }
+
+
+
+    //Salida de datos
+    printf("\nResultado: %d Horas, %d Minutos, %d segundos\n", liHorasTotal, liMinutosTotal, liSegundosTotal);
+
+    return 0;
+}
